@@ -1,0 +1,30 @@
+<% if params[:completed] == "true" %>
+  <h1>Archived Tasks</h1>
+<% else %>
+  <h1>Pending Tasks</h1>
+<% end %>
+
+<% unless params[:completed] == "true" %>
+  <div class="float-right">
+    <%= link_to tasks_path(not_due: true) do %>
+      <span class="badge badge-secondary">No Due Date</span>
+    <% end %>
+    <%= link_to tasks_path(due_later: true) do %>
+      <span class="badge badge-success">Due Later</span>
+    <% end %>
+    <%= link_to tasks_path(past_due: true) do %>
+      <span class="badge badge-danger">Past Due</span>
+    <% end %>
+    <%= link_to tasks_path(due_soon: true) do %>
+      <span class="badge badge-warning">Due Soon</span>
+    <% end %>
+  </div>
+<% end %>
+<%= render 'table', tasks: @tasks %>
+
+<hr>
+
+<h3>Add Task</h3>
+
+
+<%= render 'form', task: @task %>

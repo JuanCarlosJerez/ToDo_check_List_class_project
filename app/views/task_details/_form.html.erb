@@ -1,0 +1,10 @@
+<%= form_with(model: [task, task_detail], local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create", class: "btn btn-primary" %>
+  </div>
+<% end %>
